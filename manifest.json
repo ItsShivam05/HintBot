@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "HintBot",
+  "version": "0.1",
+  "description": "Get AI-generated hints for coding problems.",
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icon.png"
+  },
+  "icons": {
+    "48": "icon.png"
+  },
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "tabs",
+    "clipboardWrite"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "*://leetcode.com/*",
+        "*://www.leetcode.com/*",
+        "*://codeforces.com/*",
+        "*://www.codeforces.com/*",
+        "*://codechef.com/*",
+        "*://www.codechef.com/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_end",
+      "all_frames": false
+    }
+  ]
+}
