@@ -13,8 +13,7 @@
   "permissions": [
     "activeTab",
     "scripting",
-    "tabs",
-    "clipboardWrite"
+    "tabs"
   ],
   "content_scripts": [
     {

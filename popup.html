@@ -50,69 +50,42 @@
       -webkit-text-fill-color: transparent;
     }
 
-    #scanBtn {
-      font-size: 20px;
-      cursor: pointer;
-      padding: 8px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-      transition: all 0.3s ease;
-      border: 2px solid #e9ecef;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 36px;
-      height: 36px;
+
+
+    .provider-selector {
+      margin-bottom: 12px;
+      padding: 8px 0;
+      border-bottom: 1px solid #e9ecef;
     }
 
-    #scanBtn:hover {
-      background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
-      transform: scale(1.1);
-      border-color: #4f46e5;
-      animation: scanPulse 1.5s ease-in-out infinite;
+    .provider-selector label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: #495057;
+      margin-bottom: 6px;
     }
 
-    #scanBtn:active {
-      transform: scale(0.95);
-      animation: none;
-    }
-
-    @keyframes scanPulse {
-      0%, 100% { 
-        transform: scale(1.1);
-        opacity: 1;
-      }
-      50% { 
-        transform: scale(1.15);
-        opacity: 0.8;
-      }
-    }
-
-    textarea {
+    .provider-selector select {
       width: 100%;
-      height: 120px;
-      font-size: 14px;
-      padding: 12px;
+      padding: 8px 12px;
       border: 2px solid #e9ecef;
-      border-radius: 8px;
-      resize: none;
+      border-radius: 6px;
       background: #ffffff;
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      font-size: 13px;
       font-family: inherit;
-      line-height: 1.5;
+      color: #495057;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
     }
 
-    textarea:focus {
+    .provider-selector select:focus {
       outline: none;
       border-color: #4f46e5;
       box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
     }
 
-    textarea::placeholder {
-      color: #6c757d;
-    }
-
-    button {
+    #autoHintBtn {
       margin-top: 12px;
       padding: 12px 16px;
       width: 100%;
@@ -127,13 +100,13 @@
       box-shadow: 0 2px 8px rgba(79, 70, 229, 0.2);
     }
 
-    button:hover {
+    #autoHintBtn:hover {
       background: linear-gradient(135deg, #3730a3 0%, #4f46e5 100%);
       transform: translateY(-1px);
       box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
     }
 
-    button:active {
+    #autoHintBtn:active {
       transform: translateY(0);
       box-shadow: 0 2px 4px rgba(79, 70, 229, 0.2);
     }
@@ -151,14 +124,148 @@
       line-height: 1.5;
     }
 
+    .code-analysis-section {
+      margin-top: 24px;
+      padding: 16px 0;
+      border-top: 2px solid #f1f3f5;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .section-header h3 {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 700;
+      color: #2d3748;
+      margin-left: 8px;
+    }
+
+    #codeInput {
+      width: 100%;
+      min-height: 100px;
+      max-height: 200px;
+      padding: 12px;
+      border: 2px solid #e2e8f0;
+      border-radius: 8px;
+      font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+      font-size: 13px;
+      line-height: 1.4;
+      resize: vertical;
+      transition: border-color 0.3s ease;
+    }
+
+    #codeInput:focus {
+      outline: none;
+      border-color: #4f46e5;
+      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+    }
+
+    #codeInput::placeholder {
+      color: #a0aec0;
+      font-style: italic;
+    }
+
+    #analyzeBtn {
+      margin-top: 12px;
+      padding: 10px 16px;
+      width: 100%;
+      background: linear-gradient(135deg, #16a085 0%, #1abc9c 100%);
+      color: white;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 14px;
+      box-shadow: 0 2px 8px rgba(22, 160, 133, 0.2);
+    }
+
+    #analyzeBtn:hover {
+      background: linear-gradient(135deg, #138d75 0%, #16a085 100%);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(22, 160, 133, 0.3);
+    }
+
+    #analyzeBtn:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 4px rgba(22, 160, 133, 0.2);
+    }
+
+    #analyzeBtn:disabled {
+      background: #cbd5e0;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    #analysisResult {
+      margin-top: 16px;
+      padding: 0;
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #2d3748;
+      display: none;
+      max-height: 600px;
+      overflow-y: auto;
+    }
+
+    #analysisResult::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    #analysisResult::-webkit-scrollbar-track {
+      background: #f1f5f9;
+      border-radius: 3px;
+    }
+
+    #analysisResult::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+
+    #analysisResult::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+
+    .helper-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .auto-detect-btn:hover {
+      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
+    }
+
+
+
+    .helper-btn:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .helper-btn:disabled {
+      background: #9ca3af !important;
+      cursor: not-allowed !important;
+      transform: none !important;
+      box-shadow: none !important;
+    }
+
     .footer {
       text-align: center;
-      font-size: 12px;
-      margin-top: 20px;
-      color: #6c757d;
-      padding-top: 16px;
-      border-top: 1px solid #e9ecef;
-      font-weight: 500;
+      font-size: 10px;
+      margin-top: 8px;
+      color: #9ca3af;
+      padding-top: 8px;
+      border-top: 1px solid #f3f4f6;
+      font-weight: 400;
+      opacity: 0.7;
     }
   </style>
 </head>
@@ -168,12 +275,48 @@
       <img src="icon.png" alt="Icon">
       <h2><span>HintBot</span></h2>
     </div>
-    <div id="scanBtn" title="Scan problem">🔍</div>
   </div>
 
-  <textarea id="problemInput" placeholder="Paste your coding question here..."></textarea>
-  <button id="hintBtn">💡 Get AI Hints</button>
-  <div id="response">🧠 Hints will appear here...</div>
+  <div class="provider-selector">
+    <label for="providerSelect">🤖 AI Provider:</label>
+    <select id="providerSelect">
+      <option value="gemini">Gemini 2.0 Flash</option>
+      <option value="together">Together AI (Mixtral)</option>
+    </select>
+  </div>
+
+  <button id="autoHintBtn">🔍 Scan Problem & Get AI Hints</button>
+  <div id="response">🧠 Navigate to a coding problem and click the button above to get instant AI hints!</div>
+
+  <div class="code-analysis-section">
+    <div class="section-header">
+      <span style="font-size: 18px;">🔍</span>
+      <h3>AI Code Analysis</h3>
+    </div>
+    <button id="autoAnalyzeBtn" style="margin-top: 12px; padding: 12px 16px; width: 100%; background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; font-weight: 600; border: none; border-radius: 8px; cursor: pointer; transition: all 0.3s ease; font-size: 14px; box-shadow: 0 2px 8px rgba(16, 185, 129, 0.2);">
+      🤖 Auto-Analyze Code from Editor
+    </button>
+    
+    <style>
+      #autoAnalyzeBtn:hover {
+        background: linear-gradient(135deg, #047857 0%, #065f46 100%) !important;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3) !important;
+      }
+      
+      #autoAnalyzeBtn:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 4px rgba(16, 185, 129, 0.2) !important;
+      }
+      
+      #autoAnalyzeBtn:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+        transform: none !important;
+      }
+    </style>
+    <div id="analysisResult" style="margin-top: 16px; white-space: pre-wrap; padding: 12px; background: #ffffff; border: 2px solid #e9ecef; border-radius: 8px; max-height: 400px; overflow-y: auto;">🤖 Navigate to a coding problem with your solution and click the button above for instant AI code analysis!</div>
+  </div>
 
   <div class="footer">🤖 Built by Shivam Thakur | v0.1</div>
 
